@@ -55,7 +55,7 @@ const Header = () => {
                     </form>}
                     <button type="button" onClick={() => setShowCart(true)} className="cart-icon" >
                         <AiOutlineShopping style={{color:'black'}} />
-                        <span className="cart-item-qty" style={{backgroundColor:'black',color:'white'}}>10</span>
+                        <span className="cart-item-qty" style={{backgroundColor:'black',color:'white',marginLeft:'-10px'}}>10</span>
                     </button>
 
 

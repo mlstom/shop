@@ -26,9 +26,10 @@ const Opis = ({ product, products}) => {
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 1 }}
     className='daproradi'
+    style={{paddingTop:'30px'}}
     >
       
-      <div className="product-detail-container">
+      <div className="product-detail-container" >
           <div className="product-detail-image">
             <img src={imageUrl} className="product-detail-image" />
           </div>

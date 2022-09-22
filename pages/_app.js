@@ -3,6 +3,8 @@ import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import Head from 'next/head'
 import {useState , useEffect} from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
   
@@ -13,7 +15,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       
       <StateContext >
+        <Header />
         <Component {...pageProps} />
+        <Footer />
       </StateContext>
     </>
   )
