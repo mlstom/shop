@@ -29,7 +29,7 @@ export default function Home({proizvodi}) {
 }
 
 export async function getServerSideProps() {
-  const products = await fetch('http://localhost:3000/api/products')
+  const products = await fetch('https://shop-1hgk.vercel.app/api/products')
   
   return {
     props: { proizvodi: await products.json() }

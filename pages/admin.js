@@ -511,8 +511,8 @@ const Admin = ({ products, porudzbine }) => {
 }
 
 export async function getServerSideProps() {
-    const products = await fetch('http://localhost:3000/api/products')
-    const porudzbine = await fetch('http://localhost:3000/api/porudzbine')
+    const products = await fetch('https://shop-1hgk.vercel.app/api/products')
+    const porudzbine = await fetch('https://shop-1hgk.vercel.app/api/porudzbine')
     return {
         props: { products: await products.json(), porudzbine: await porudzbine.json() }
     }

@@ -89,9 +89,9 @@ const Opis = ({ product, products}) => {
 
 
 export const getServerSideProps = async ({ params: { id }}) => {
-  const product = await fetch(`http:/localhost:3000/api/product/id/${id}`)
+  const product = await fetch(`https://shop-1hgk.vercel.app/api/product/id/${id}`)
   const [proizvod] = await product.json()
-  const products = await fetch('http:/localhost:3000/api/products')
+  const products = await fetch('https://shop-1hgk.vercel.app/api/products')
   const proizvodi = await products.json()
   return {
     props: {product:JSON.stringify(proizvod) , products:JSON.stringify(proizvodi) }
