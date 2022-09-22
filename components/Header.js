@@ -34,7 +34,7 @@ const Header = () => {
                 <button type="button" onClick={() => setshowMenu(!showMenu)} className="cart-icon" style={{color:'black'}} >
                     <AiOutlineMenu />
                 </button>
-                <div className='logo' style={{display:'flex',justifyContent:'center',alignItems:'center',color:'black' }}>
+                <div className='logo' >
                     Inkrist
                 </div>
                 <div className='flex4'>

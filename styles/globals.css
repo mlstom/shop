@@ -533,7 +533,9 @@ span.text-red {
 }
 
 .logo {
-  color: gray;
+  color: black;
+  display: flex;
+  align-items: center;
   font-size: 18px;
   cursor: pointer;
 }
@@ -1693,6 +1695,9 @@ margin-top: 5px;
 }
 
 @media screen and (max-width:800px) {
+  .logo{
+    display: none;
+  }
   .kat-image{
       width: 150px;
       height: 150px;
@@ -2069,6 +2074,7 @@ margin-top: 5px;
   .zarel{
       margin-top: 30px;
   }
+  
 }
 .nav__ul li a:hover{
   color: #000;
