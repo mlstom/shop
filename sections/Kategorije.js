@@ -21,6 +21,7 @@ const Left = styled.div`
     flex-direction:column;
     @media only screen and (max-width: 800px) {
         margin-bottom:120px;
+        margin-right:-10px;
     }
 `
 const Right = styled.div`
@@ -41,6 +42,8 @@ const Button = styled.button`
         background-color:black;
         color:white;
     }
+    border:none;
+    box-shadow:0 0 0 1px black;
 `
 
 const Kategorije = () => {
