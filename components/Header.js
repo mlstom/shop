@@ -31,7 +31,7 @@ const Header = () => {
     return (
         <Absolute className='linijica'>
             <div className="navbar-container">
-                <button type="button" onClick={() => setshowMenu(!showMenu)} className="cart-icon" style={{color:'black'}} >
+                <button type="button" onClick={() => setshowMenu(!showMenu)} className="cart-icon" style={{ color: 'black' }} >
                     <AiOutlineMenu />
                 </button>
                 <div className='logo' >
@@ -39,23 +39,25 @@ const Header = () => {
                 </div>
                 <div className='flex4'>
                     <button type="button" onClick={() => setpokazi(!pokazi)} className="cart-icon" >
-                        {!pokazi && <RiSearch2Line style={{color:'black'}} />}
+                        {!pokazi && <RiSearch2Line style={{ color: 'black' }} />}
                     </button>
                     {pokazi && <form
                         onSubmit={handlesearch}
                         className="flex4"
                     >
                         <motion.input
-                            style={{backgroundColor:'transparent',color:'black'}}
+                            style={{ backgroundColor: 'transparent', color: 'black' }}
                             initial={{ opacity: 0, width: 0 }}
                             animate={{ opacity: 1, width: 160 }}
                             transition={{ duration: 0.5 }}
-                            type="text" placeholder='Pretrazi' value={term} onChange={(e) => setterm(e.target.value)}></motion.input> <button className='cart-icon' type='button' onClick={() => setpokazi(!pokazi)}> <AiOutlineClose style={{color:'black'}} /> </button>
+                            type="text" placeholder='Pretrazi' value={term} onChange={(e) => setterm(e.target.value)}></motion.input> <button className='cart-icon' type='button' onClick={() => setpokazi(!pokazi)}> <AiOutlineClose style={{ color: 'black' }} /> </button>
 
                     </form>}
                     <button type="button" onClick={() => setShowCart(true)} className="cart-icon" >
-                        <AiOutlineShopping style={{color:'black'}} />
-                        <span className="cart-item-qty" style={{backgroundColor:'black',color:'white',marginLeft:'-10px'}}>10</span>
+                        <div>
+                            <AiOutlineShopping style={{ color: 'black' }} />
+                            <span className="cart-item-qty" style={{ backgroundColor: 'black', color: 'white', marginLeft: '-10px' }}>10</span>
+                        </div>
                     </button>
 
 
