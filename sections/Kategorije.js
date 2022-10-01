@@ -5,6 +5,8 @@ import Image from 'next/image'
 import kat1 from '../assets/img/banner/banner-1.jpg'
 import kat2 from '../assets/img/product/product-5.jpg'
 import kat3 from '../assets/img/instagram/instagram-4.jpg'
+import  Router  from 'next/router'
+
 
 const Kat = styled.div`
     display:flex;
@@ -52,7 +54,7 @@ const Kategorije = () => {
             <Kat>
                 <Left>
                     <h3>T-Shirt <br /> Collections 2030</h3>
-                    <Button>Shop</Button>
+                    <Button onClick={()=>Router.push('/kategorija/majca')}>Shop</Button>
                 </Left>
                 <Right>
                     <Image src={kat2} alt='pisa' width='330px' height='330px' />
@@ -64,13 +66,14 @@ const Kategorije = () => {
                 </Left>
                 <Right style={{zIndex:'99'}}>
                 <h3>Hoody<br /> Collections 2030</h3>
-                    <Button>Shop</Button>
+                <p>Trenutno nedostupno</p>
+                    <Button >Shop</Button>
                 </Right>
             </Kat>
             <Kat>
                 <Left style={{zIndex:'100'}}>
                     <h3>Whole <br/> Collections 2030</h3>
-                    <Button>Visit</Button>
+                    <Button onClick={()=>Router.push('/proizvodi')}>Visit</Button>
                 </Left>
                 <Right style={{marginTop:'-100px',zIndex:'99'}}>
                     <Image src={kat3} alt='pisa' width='350px' height='350px' />

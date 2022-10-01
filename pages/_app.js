@@ -3,8 +3,8 @@ import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import Head from 'next/head'
 import {useState , useEffect} from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { Toaster } from 'react-hot-toast'
+import Gototop from '../components/GoToTop'
 
 function MyApp({ Component, pageProps }) {
   
@@ -13,11 +13,11 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <Toaster  />
       
       <StateContext >
-        <Header />
+      <Gototop />
         <Component {...pageProps} />
-        <Footer />
       </StateContext>
     </>
   )

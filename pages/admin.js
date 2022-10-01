@@ -329,7 +329,7 @@ const Admin = ({ products, porudzbine }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id: odabran.id, naziv: odabran.naziv, opis: odabran.opis, cena: odabran.cena, kategorija: odabran.kategorija, url: odabran.imageUrl, stanje: odabran.stanje })
+            body: JSON.stringify({ id: odabran.id, naziv: odabran.naziv, opis: odabran.opis, cena: odabran.cena, kategorija: odabran.kategorija, url: odabran.imageUrl, quantity: odabran.quantity })
         })
         products.splice(idx, 1)
         products.push(odabran)
@@ -346,7 +346,7 @@ const Admin = ({ products, porudzbine }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ naziv: odabran.naziv, opis: odabran.opis, cena: odabran.cena, kategorija: odabran.kategorija, url: odabran.imageUrl, stanje: odabran.stanje })
+            body: JSON.stringify({ naziv: odabran.naziv, opis: odabran.opis, cena: odabran.cena, kategorija: odabran.kategorija, url: odabran.imageUrl, quantity: odabran.quantity })
         })
         odabran.id = uuidv4()
         products.push(odabran)
@@ -409,7 +409,7 @@ const Admin = ({ products, porudzbine }) => {
                             <input type='text' placeholder='opis' value={odabran?.opis} onChange={(e) => setodabran({ ...odabran, opis: e.target.value })} />
                             <input type='number' placeholder='cena' value={odabran?.cena} onChange={(e) => setodabran({ ...odabran, cena: e.target.value })} />
                             <input type='text' placeholder='kategorija' value={odabran?.kategorija} onChange={(e) => setodabran({ ...odabran, kategorija: e.target.value })} />
-                            <input type='number' placeholder='stanje' value={odabran?.stanje} onChange={(e) => setodabran({ ...odabran, stanje: e.target.value })} />
+                            <input type='number' placeholder='quantity' value={odabran?.quantity} onChange={(e) => setodabran({ ...odabran, quantity: e.target.value })} />
                             {slika ? <img src={slika.url} width='100px' height='100px' /> : <div>
                                 <input type='file' id='file' onChange={(e) => uploadImage(e)} />
                             </div>}
@@ -427,7 +427,7 @@ const Admin = ({ products, porudzbine }) => {
                         <input type='number' value={odabran?.cena} onChange={(e) => setodabran({ ...odabran, cena: e.target.value })} />
                         <input type='text' value={odabran?.kategorija} onChange={(e) => setodabran({ ...odabran, kategorija: e.target.value })} />
                         <input type='text' value={odabran?.pol} onChange={(e) => setodabran({ ...odabran, pol: e.target.value })} />
-                        <input type='number' value={odabran?.stanje} onChange={(e) => setodabran({ ...odabran, stanje: e.target.value })} />
+                        <input type='number' value={odabran?.quantity} onChange={(e) => setodabran({ ...odabran, quantity: e.target.value })} />
 
                         <div>
                             <input type='file' id='file' onChange={(e) => uploadImage(e)} />
@@ -459,7 +459,7 @@ const Admin = ({ products, porudzbine }) => {
                     <LeftPart>
                         {prpage ? <Graf>
                             {products.map((product, index) => <Product key={product.id}>
-                                <Border><Flex> <div>{product.naziv}</div> <div>{product.opis}</div> <div>{product.kategorija}</div> <div>{product.pol}</div> <div>{product.cena}</div> <div>{product.stanje}</div>  <img src={product.imageUrl} width='40px' height='40px' /> </Flex> <div style={{ display: 'flex' }}> <Edit onClick={() => { setodabran(product); setedit(true); setidx(index) }}  ><AiTwotoneEdit fontSize='25px' /></Edit> <Delete onClick={() => { setodabran(product); setdel(true); setidx(index) }} ><AiFillDelete fontSize='25px' /></Delete> </div> </Border>
+                                <Border><Flex> <div>{product.naziv}</div> <div>{product.opis}</div> <div>{product.kategorija}</div> <div>{product.pol}</div> <div>{product.cena}</div>   <img src={product.imageUrl} width='40px' height='40px' /> </Flex> <div style={{ display: 'flex' }}> <Edit onClick={() => { setodabran(product); setedit(true); setidx(index) }}  ><AiTwotoneEdit fontSize='25px' /></Edit> <Delete onClick={() => { setodabran(product); setdel(true); setidx(index) }} ><AiFillDelete fontSize='25px' /></Delete> </div> </Border>
                             </Product>)}
                         </Graf> : <Graf>
                             {poredit && <Deletepage >
@@ -483,13 +483,13 @@ const Admin = ({ products, porudzbine }) => {
                             <h3 style={{ color: 'white' }}>Ne poslate</h3>
                             {
                                 porudzbine?.map((por) => (!por.stigla ? <Product key={por.id}>
-                                    <Border><Flex><div>{por.porId}.</div> <div>{por.naziv} {por.productId}</div> <div>{por.velicina}</div> <div>{por.productKolicina}</div> <div>{por.cena * por.productKolicina}</div> <div>{por.ime} {por.prezime}</div> <div>{por.ulicabr}, {por.grad} {por.posta}</div> <div>{por.tel}</div>  <div>{por.stigla ? "true" : "false"}</div></Flex> <Edit onClick={() => { setporedit(true); settrpr(por) }} ><BsCheck2All fontSize='22px' /></Edit> </Border>
+                                    <Border><Flex><div>{por.porId}.</div> <div>{por.naziv} {por.productId}</div> <div>{por.velicina}</div> <div>{por.productKolicina}</div> <div>{por.cena * por.productKolicina}</div> <div>{por.napomena}</div> <div>{por.ime} {por.prezime}</div> <div>{por.ulicabr}, {por.grad} {por.posta}</div> <div>{por.tel}</div>  <div>{por.stigla ? "true" : "false"}</div></Flex> <Edit onClick={() => { setporedit(true); settrpr(por) }} ><BsCheck2All fontSize='22px' /></Edit> </Border>
                                 </Product> : null))
                             }
                             <h3 style={{ color: 'white' }}>Poslate</h3>
                             {
                                 porudzbine?.map((por) => (por.stigla ? <Product key={por.id}>
-                                    <Border><Flex><div>{por.porId}.</div> <div>{por.naziv} {por.productId}</div> <div>{por.velicina}</div> <div>{por.productKolicina}</div> <div>{por.cena * por.productKolicina}</div> <div>{por.ime} {por.prezime}</div> <div>{por.ulicabr}, {por.grad} {por.posta}</div> <div>{por.tel}</div>  <div>{por.stigla ? "true" : "false"}</div></Flex> <Delete onClick={() => { setpordel(true); settrpr(por) }} ><AiFillDelete fontSize='22px' /></Delete> </Border>
+                                    <Border><Flex><div>{por.porId}.</div> <div>{por.naziv} {por.productId}</div> <div>{por.velicina}</div> <div>{por.productKolicina}</div> <div>{por.cena * por.productKolicina}</div> <div>{por.napomena}</div> <div>{por.ime} {por.prezime}</div> <div>{por.ulicabr}, {por.grad} {por.posta}</div> <div>{por.tel}</div>  <div>{por.stigla ? "true" : "false"}</div></Flex> <Delete onClick={() => { setpordel(true); settrpr(por) }} ><AiFillDelete fontSize='22px' /></Delete> </Border>
                                 </Product> : null))
                             }
                         </Graf>}
@@ -512,7 +512,7 @@ const Admin = ({ products, porudzbine }) => {
 
 export async function getServerSideProps() {
     const products = await fetch('https://shop-1hgk.vercel.app/api/products')
-    const porudzbine = await fetch('https://shop-1hgk.vercel.app/api/porudzbine')
+    const porudzbine = await fetch('http://localhost:3000/api/porudzbine')
     return {
         props: { products: await products.json(), porudzbine: await porudzbine.json() }
     }

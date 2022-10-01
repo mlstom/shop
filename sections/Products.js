@@ -12,25 +12,23 @@ const Main = styled.div`
 `
 
 const Products = () => {
-    const {products} = useStateContext()
+  const { products } = useStateContext()
 
   return (
     <Main>
-        <h1 style={{color:'black',marginLeft:"10%"}}>Products</h1>
-        {console.log(products)}
-        <motion.div 
-          
-          className="products-container grid">
-          {products?.map((product) => <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    key={product.id}
-                    
-          >
-            <Product  product={product} />
-          </motion.div> )}
-        </motion.div>
+      <h1 style={{ color: 'black', marginLeft: "10%" }}>Products</h1>
+      <motion.div
+        className="products-container grid">
+        {products?.map((product) => <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          key={product.id}
+
+        >
+          <Product product={product} />
+        </motion.div>)}
+      </motion.div>
 
     </Main>
   )

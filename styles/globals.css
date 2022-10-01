@@ -533,7 +533,7 @@ span.text-red {
 }
 
 .logo {
-  color: black;
+  color: white;
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -696,6 +696,9 @@ span.text-red {
   line-height: 0.9;
   width: 100%;
 
+}
+.linijica{
+  background-color: rgba(0, 0, 0, 0.276);
 }
 
 .hero-banner-container .beats-solo {
@@ -1030,6 +1033,14 @@ left: 8%; */
 
 .flex1 .p {
   cursor: pointer;
+
+}
+.p a{
+  text-decoration: none;
+  color: #000;
+}
+.p a:hover{
+  color:black
 }
 
 .menu-container {
@@ -1601,7 +1612,7 @@ left: 8%; */
   width: 50px;
   height: 50px;
   top:90%;
-  background-color: #324d67;
+  background-color: black;
   z-index: 9;
   animation: bes 1.25s ease-in-out infinite;
   cursor: pointer;

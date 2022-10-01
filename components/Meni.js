@@ -1,8 +1,8 @@
 import React from 'react'
 import { useStateContext } from '../context/StateContext';
-import Link from 'next/link'
-import { AiOutlineLeft, AiOutlineRight, AiOutlineDown } from 'react-icons/ai'
+import { AiOutlineLeft} from 'react-icons/ai'
 import { motion } from "framer-motion"
+import Link from 'next/link';
 
 const Meni= () => {
 
@@ -27,9 +27,8 @@ const Meni= () => {
         </button>
         <h3>Meni</h3>
         <div className='flex1 '>
-          <p onClick={() => setshowMenu(false)} className='p' ><Link href="/" >Pocetna </Link> </p>
+          <p onClick={() => setshowMenu(false)} className='p'  ><Link href="/" style={{color:'black',textDecoration:'none'}}  >Pocetna </Link> </p>
         </div>
-
 
       </motion.div>
     </motion.div>

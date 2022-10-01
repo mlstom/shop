@@ -13,19 +13,8 @@ import { useStateContext } from '../context/StateContext';
 
 const Korpa = () => {
   const cartRef = useRef();
-  const { setShowCart} = useStateContext();
-  const cartItems = [
-    {
-        id:1,
-        cena:1000,
-        naziv:'Kurac'
-    },
-    {
-        id:2,
-        cena:1000,
-        naziv:'Kura2'
-    }
-  ]
+  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
+  
   return (
     <motion.div className='cart-wrapper' ref={cartRef}
       
@@ -41,7 +30,7 @@ const Korpa = () => {
           onClick={() => setShowCart(false)}>
           <AiOutlineRight />
           <span className="heading">Vasa Korpa</span>
-          <span className="cart-num-items">0</span>
+          <span className="cart-num-items">{cartItems.length}</span>
         </button>
         {cartItems.length < 1 && (
           <div className="empty-cart">
@@ -58,31 +47,31 @@ const Korpa = () => {
             </Link>
           </div>
         )}
-        <div className="product-container">
+        <div className="product-container" >
           {cartItems.length >= 1 && cartItems.map((item) => (
-            <div className="product" key={item._id}>
+            <div className="product" key={item.id} >
               <img src={item?.imageUrl} className="cart-product-image" />
               <div className="item-desc">
-                <div className="flex">
+                <div className="flex" style={{marginLeft:'-10px'}}>
                   <h5>{item.naziv}</h5>
-
+                  <h5>{item.velicina}</h5>
                   <h4>{item.cena}Rsd</h4>
                 </div>
                 
                 <div className="flex bottom">
                   <div>
                     <p className="quantity-desc">
-                      <span className='minus' onClick={() => null}>
+                      <span className='minus' onClick={() => toggleCartItemQuanitity(item.id, 'dec')}>
                         <AiOutlineMinus />
                       </span>
                       <span className="num" onClick="">{item.quantity}</span>
-                      <span className="plus" onClick={() => null}><AiOutlinePlus /></span>
+                      <span className="plus" onClick={() => toggleCartItemQuanitity(item.id, 'inc')}><AiOutlinePlus /></span>
                     </p>
                   </div>
                   <button
                     type="button"
                     className="remove-item"
-                    onClick={() => null}
+                    onClick={() => onRemove(item)}
                   >
                     <TiDeleteOutline />
                   </button>
@@ -96,10 +85,10 @@ const Korpa = () => {
           <div className="cart-bottom">
             <div className="total">
               <h3>Ukupno:</h3>
-              <h3>500 RSD</h3>
+              <h3>{totalPrice}</h3>
             </div>
             <div className="btn-container">
-            <Link href={`/`}>
+            <Link href={`/placanje`}>
                 <button type="button" className="btn voz" onClick={() => setShowCart(false)}>
                   Nastavi placanje
                 </button>
