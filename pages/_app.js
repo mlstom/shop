@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Head from 'next/head'
 import {useState , useEffect} from 'react'
 import { Toaster } from 'react-hot-toast'
-import Gototop from '../components/GoToTop'
+import Gototop from '../components/Gototop'
 
 function MyApp({ Component, pageProps }) {
   
